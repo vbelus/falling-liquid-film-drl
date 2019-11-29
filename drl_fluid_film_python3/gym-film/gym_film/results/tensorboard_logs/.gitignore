@@ -1,0 +1,4 @@
+# Git doesn't track empty directories
+# I'm here to counter that !
+*
+!.gitignore

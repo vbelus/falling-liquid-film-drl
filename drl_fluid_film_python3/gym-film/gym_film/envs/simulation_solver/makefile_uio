@@ -1,0 +1,23 @@
+CC = g++
+CFLAGS = -std=c++11 -Ofast -march=native -flto
+LIBRARIES = \
+-lpython3 -lboost_numpy36 \
+
+INCLUDES = \
+-I/opt/uio/modules/packages/python/anaconda3/pkgs/boost-1.70.0-py36h9de70de_1/include/ \
+-L/opt/uio/modules/packages/python/anaconda3/lib \
+-I/opt/uio/modules/packages/python/anaconda3/include/python3.6m \
+-I/usr/include/python3.6 \
+-L/usr/lib64 \
+
+
+OBJ_FILES = simulation_cpp.o TVD3.o advect_in_time.o
+
+cpp.so : $(OBJ_FILES)
+	$(CC) -shared -o $@ $(OBJ_FILES) $(INCLUDES) $(LIBRARIES) $(CFLAGS)
+
+%.o: %.cpp
+	$(CC) -fPIC -o $@ -c $< $(INCLUDES) $(CFLAGS)
+
+clean :
+	rm simulation_cpp.o advect_in_time.o TVD3.o cpp.so
