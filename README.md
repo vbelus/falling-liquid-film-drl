@@ -1,4 +1,4 @@
-# drl-fluid-film
+# Deep Reinforcement Learning control of the unstable falling liquid film
 
 ![no-control](https://media.giphy.com/media/cO3IdQaGRyK0BYAslz/giphy.gif)
 ![control](https://media.giphy.com/media/dY0qmKEb5bXhf3gHvs/giphy.gif)
