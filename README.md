@@ -1,4 +1,4 @@
-# drl-fluid-film
+# Deep Reinforcement Learning control of the unstable falling liquid film
 
 ![no-control](https://media.giphy.com/media/cO3IdQaGRyK0BYAslz/giphy.gif)
 ![control](https://media.giphy.com/media/dY0qmKEb5bXhf3gHvs/giphy.gif)
@@ -31,21 +31,25 @@ The easiest way is to run the code in a docker container, built from a Ubuntu 18
 Docker is a convenient tool to use containers. If you're not familiar with the concept, everything you need to run code from this project will be inside the container. In this case, it will be an Ubuntu 18.04 distribution with Python3 and other necessary packages.
 The details of how I built my docker image from `ubuntu:latest` are in [this repository](https://github.com/vbelus/docker_fluid_film). You can find all these steps in the `Dockerfile`.
 
-- Once you can use Docker, build the image from the `Dockerfile` by running the following command in the same directory as the `Dockerfile` (this can take several minutes or more depending on your internet connection, and the docker image will take 2.4GB on your disk):
-```shell
-$ docker build . -t drl-fluid-film:latest
-```
+- Once you can use Docker, get the image :
+  - from the `Dockerfile` by running the following command in the same directory as the `Dockerfile` (this can take several minutes or more depending on your internet connection, and the docker image will take 2.4GB on your disk):
+  ```shell
+  $ docker build . -t falling-liquid-film:latest
+  ```
+  - by downloading it from the following adress : https://folk.uio.no/jeanra/Research/falling-liquid-film_latest.tar.gz
 
-- You can then run a container from this image with the following command:
+- You can then run a container from this image with the following command :
 ```shell
-$ docker run -it drl-fluid-film:latest
+$ docker run -it falling-liquid-film:latest
 ```
 
 - You should now be in the `gym-film` folder, ready to launch trainings XX: make display possible
 
 ### Run it with Ubuntu
 
-XX: fill this section, but basically same as Dockerfile
+You can install the dependencies on your own Ubuntu distribution, as is done when building the Docker image. 
+
+The details are in [this repository](https://github.com/vbelus/docker_fluid_film), after the **"Packages I installed step by step"** section.
 
 ## How do I train some models ?
 
@@ -77,9 +81,11 @@ Some important parameters here are :
 - The non-dimensional duration of one episode `simulation_time` (float, 5 - 20)
 - The duration of the simulation before we begin any training `initial_waiting_time` (float). Default value is 200, letting the simulation get to a converged state before we do any training (the state is stored and not computed each time)
 - `simulation_step_time` is the non-dimensional duration of one step of the simulation. In one such step, we do `n_step` steps of the numerical scheme
+- Whether to render the simulation with matplotlib with `render` (bool). If True, render it every `RENDER_PERIOD` (int) environment steps
 
-## That would be great if I could visualize all that in a jupyter notebook !
-Wouldn't it ? Well you are in luck because that is exactly what you can do here: [**LINK TO THE NOTEBOOK REPO**](https://github.com/vbelus/drl-fluid-film-notebook)
+## That would be nice if I could visualize all that in a jupyter notebook
+And that is exactly what you can do here: [**LINK TO THE NOTEBOOK REPO**](https://github.com/vbelus/drl-fluid-film-notebook)
+**You need Docker to run this**
 
 This notebook will demonstrate how the three implemented methods build on top of each other, and you will be able to look at what the different parameters do on the simulation interactively. 
 
