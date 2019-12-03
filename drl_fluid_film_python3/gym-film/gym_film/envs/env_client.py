@@ -149,7 +149,7 @@ class FilmEnvClient(gym.Env):
         return(request, data)
 
     def get_epoch_reward(self):
-        print(self.current_step)
+        # print(self.current_step)
         reward_list = self._reward_list.copy()
         self._reward_list=[]
         return reward_list

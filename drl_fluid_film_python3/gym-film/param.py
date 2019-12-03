@@ -53,7 +53,7 @@ threshold_hq = 5 # max value in obs, to not give too high inputs to the nn
 
 #################### about the jets ##################
 n_jets=10
-JET_MAX_POWER=1
+JET_MAX_POWER=5
 JET_WIDTH_mm=5.0
 
 space_between_jets=10
@@ -84,7 +84,7 @@ true_reset_every_n_episodes = False
 
 
 ########################################## about rendering ##################################################################
-render = True
+render = False
 
 MAX_TIMEFRAME_CONTROL_PLOT = 64  # Max number of points to plot the control+h/time
 MAX_TIMEFRAME_FULL_CONTROL_PLOT = 48

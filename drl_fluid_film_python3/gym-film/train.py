@@ -11,6 +11,7 @@ if __name__ == '__main__':
     # from stable_baselines.common.vec_env import DummyVecEnv
     from stable_baselines.common.vec_env import SubprocVecEnv
     import gym
+    import numpy as np
 
     # imports from the project directory
     from gym_film.model import get_model
@@ -170,7 +171,7 @@ if __name__ == '__main__':
             global S
             S.add_epoch(1)
 
-            print("hey, epoch number {}".format(nb_epoch))
+            print("Epoch number {}".format(nb_epoch))
             print("We are in following training: {}".format(training_name))
 
             if param.monitor_reward:
@@ -190,21 +191,22 @@ if __name__ == '__main__':
 
                 pickle.dump(single_reward_list, file_reward_list)
 
-                # mean_reward = np.mean(reward_list, axis=1)
-                # # We check if the model at this step is better than the previous best
-                # mean_mean_reward = np.mean(mean_reward)
-                # # TODO - now if we launch a training from a preexisting model,
-                # #        the best model will immediately be replaced by the new,
-                # #        because of the following condition. The best reward
-                # #        can be added to the model object to fix that
-                # if best_mean_reward == None:
-                #     best_mean_reward = mean_mean_reward
-                # if mean_mean_reward > best_mean_reward:
-                #     best_mean_reward = mean_mean_reward
-                #     shutil.rmtree(best_model_dir)
-                #     os.mkdir(best_model_dir)
-                #     _locals["self"].save(best_model_dir + str(nb_epoch) + "epochs")
-                # TODO put back the best model saving
+                mean_reward = np.mean(single_reward_list)
+                print('Mean episode reward : ', mean_reward)
+
+                # We check if the model at this step is better than the previous best
+
+                # TODO - now if we launch a training from a preexisting model,
+                #        the best model will immediately be replaced by the new,
+                #        because of the following condition. The best reward
+                #        can be added to the model object to fix that
+                if best_mean_reward == None:
+                    best_mean_reward = mean_reward
+                if mean_reward > best_mean_reward:
+                    best_mean_reward = mean_reward
+                    shutil.rmtree(best_model_dir)
+                    os.mkdir(best_model_dir)
+                    _locals["self"].save(best_model_dir + str(nb_epoch) + "epochs")
 
             # We also save models every n epochs
             if nb_epoch % param.save_every_n_epoch == 0:
