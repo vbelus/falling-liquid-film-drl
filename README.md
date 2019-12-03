@@ -47,7 +47,9 @@ $ docker run -it falling-liquid-film:latest
 
 ### Run it with Ubuntu
 
-XX: fill this section, but basically same as Dockerfile
+You can install the dependencies on your own Ubuntu distribution, as is done when building the Docker image. 
+
+The details are in [this repository](https://github.com/vbelus/docker_fluid_film), after the **"Packages I installed step by step"** section.
 
 ## How do I train some models ?
 
