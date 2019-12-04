@@ -13,11 +13,12 @@ Reinforcement Learning control of the unstable falling liquid film,
 ArXiv (2019)
 ```
 
-This README will be in two parts :
+This README will be in three parts :
 - The first part will be about the code in itself
 - The second part will be about getting an environment ready to run the code (either in a docker container, or in Ubuntu)
+- The third part will be about the details of how to train a model
 
-## What you can find in this repo
+## 1 - What you can find in this repo
 
 The code is in `drl_fluid_film_python3/gym-film`. You find the following files:
 - `param.py` contains the parameters that your next training will use (all the parameters of the project are centralized here)
@@ -29,7 +30,7 @@ In `gym_film`, you will find the following directories:
 - `results`, where previously trained models are stored along with the parameters used for the training, and tensorboard logs to have insights on how the model performs during training
 
 
-## You need an environment in which you can run the code
+## 2 - You need an environment in which you can run the code
 Because the simulation is built from scratch in C++ and linked with the Python API with the library Boost.Python, you need to have the library installed for the simulation to run.
 
 The easiest way is to run the code in a docker container, built from a Ubuntu 18.04 image. This way you can run the code whether you are on Windows, MacOS or Linux as long as you can run docker.
@@ -59,7 +60,7 @@ You can install the dependencies on your own Ubuntu distribution, as is done whe
 
 The details are in [this repository](https://github.com/vbelus/docker_fluid_film), after the **"Packages I installed step by step"** section.
 
-## How do I train some models ?
+## 3 - How do I train some models ?
 
 ### Execute the main script
 
@@ -90,6 +91,8 @@ Some important parameters here are :
 - The duration of the simulation before we begin any training `initial_waiting_time` (float). Default value is 200, letting the simulation get to a converged state before we do any training (the state is stored and not computed each time)
 - `simulation_step_time` is the non-dimensional duration of one step of the simulation. In one such step, we do `n_step` steps of the numerical scheme
 - Whether to render the simulation with matplotlib with `render` (bool). If True, render it every `RENDER_PERIOD` (int) environment steps
+
+___
 
 ## That would be nice if I could visualize all that in a jupyter notebook
 And that is exactly what you can do here: [**LINK TO THE NOTEBOOK REPO**](https://github.com/vbelus/drl-fluid-film-notebook)
