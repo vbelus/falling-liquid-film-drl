@@ -3,7 +3,7 @@
 ![no-control](https://media.giphy.com/media/cO3IdQaGRyK0BYAslz/giphy.gif)
 ![control](https://media.giphy.com/media/dY0qmKEb5bXhf3gHvs/giphy.gif)
 
-I used this code in the paper `Exploiting locality and physical invariants to design effective Deep Reinforcement Learning control of the unstable falling liquid film` that you can check out [**HERE**](https://arxiv.org/abs/1910.07788)
+I used this code in the paper `Exploiting locality and physical invariants to design effective Deep Reinforcement Learning control of the unstable falling liquid film` that you can check out [here - https://aip.scitation.org/doi/10.1063/1.5132378](https://aip.scitation.org/doi/10.1063/1.5132378)
 
 If you find this work useful and / or use it in your own research, please cite our works:
 ```
